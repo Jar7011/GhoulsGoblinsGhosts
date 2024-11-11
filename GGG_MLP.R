@@ -2,8 +2,6 @@ library(tidymodels)
 library(vroom)
 library(themis)
 library(embed)
-library(tensorflow)
-library(keras)
 
 ## MLP ##
 
@@ -33,7 +31,7 @@ mlp_wf <- workflow() %>%
   add_model(mlp_model)
 
 # Grid of values to tune over
-tuning_grid <- grid_regular(hidden_units(range = c(1,50)),
+tuning_grid <- grid_regular(hidden_units(range = c(1,20)),
                             levels = 5)
 
 # Split data for CV
