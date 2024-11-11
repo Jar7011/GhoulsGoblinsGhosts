@@ -7,7 +7,7 @@ library(keras)
 
 ## MLP ##
 
-## KNN ##
+# Read in data
 train_data <- vroom('train.csv')
 test_data <- vroom('test.csv')
 
