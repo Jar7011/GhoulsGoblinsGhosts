@@ -16,9 +16,9 @@ train_data <- train_data %>%
 
 # Create recipe
 boost_recipe <- recipe(type ~ ., data = train_data) %>% 
-  step_mutate(color = factor(color)) %>% 
-  step_dummy(color) %>% 
-  step_normalize(all_numeric_predictors())
+  step_mutate_at(all_nominal_predictors(), fn = factor) %>% 
+  step_dummy(all_nominal_predictors()) %>% 
+  step_range(all_numeric_predictors(), min=0, max=1)
 
 # Create model 
 boost_model <- boost_tree(tree_depth = tune(),
